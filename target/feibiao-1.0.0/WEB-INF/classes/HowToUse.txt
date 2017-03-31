@@ -1,0 +1,11 @@
+工程所用技术：spring4 + netty5 + mybatis + mysql
+
+1.下载安装jdk6+,eclipse,maven,tomcat7, Mysql Database
+2.设置环境变量：JAVA_HOME, MAVEN_HOME
+3.eclipse中导入该项目，执行maven命令成功下载所需jar包
+4.执行sql/mysql/schema.sql,数据库为mysql，修改server.properties数据库连接帐号和密码
+5.启动服务com.zhmt.feibiao.httpserver.HttpServer,执行main方法
+6.TestController执行main方法
+或者执行run.bat打包工程，将target目录下的feibiao.war部署到tomcat,
+浏览器中输入 http://localhost:9010/info?userId=1 显示返回json string
+7.如果需要新增一个Controller，直接修改resources下的controller/controller-mapping.xml文件，然后实现相应的Controller

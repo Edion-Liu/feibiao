@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" build-on-make="true" name="feibiao:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="feibiao.war">
+      <element id="artifact" artifact-name="feibiao:war exploded" />
+    </root>
+  </artifact>
+</component>

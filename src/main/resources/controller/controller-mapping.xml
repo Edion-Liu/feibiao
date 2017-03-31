@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="loginController" class="com.zhmt.feibiao.user.controller.LoginController" />
+	<bean id="thirdPartyLoginController" class="com.zhmt.feibiao.user.controller.ThirdPartyLoginController" />
+	<bean id="userController" class="com.zhmt.feibiao.user.controller.UserController" />
+	<bean id="registerController" class="com.zhmt.feibiao.user.controller.RegisterController" />
+	<bean id="adddevicesController" class="com.zhmt.feibiao.user.controller.AdddevidesController"/>
+	<bean id="getdevicesController"  class="com.zhmt.feibiao.user.controller.GetdevicesController"/>
+	<bean id="removedevicescontroller" class="com.zhmt.feibiao.user.controller.RemovedevidesController"/>
+    <bean id="setpwdevidescontroller" class="com.zhmt.feibiao.user.controller.SetpwdevicesController"/>
+	<bean id="testController" class="com.zhmt.feibiao.user.controller.TestController"/>
+	<bean id="resetdevices" class="com.zhmt.feibiao.user.controller.Resetdevices"/>
+
+	<bean id="new_login" class="com.zhmt.feibiao.user.controller.api.new_login"/>
+
+
+	<bean id="controllerMap" class="com.zhmt.feibiao.httpserver.netty.ControllerMap">
+		<property name="controllerMap">
+			<map>
+				<entry key="/user/login" value-ref="loginController" />
+				<entry key="/user/thirdPartyLogin" value-ref="thirdPartyLoginController" />
+				<entry key="/user/info" value-ref="userController" />
+				<entry key="/user/register" value-ref="registerController" />
+				<entry key="/user/adddevides" value-ref="adddevicesController" />
+				<entry key="/user/getdevices" value-ref="getdevicesController"/>
+				<entry key="/user/removedevides" value-ref="removedevicescontroller"/>
+                <entry key="/user/setpwdevides"  value-ref="setpwdevidescontroller"/>
+				<entry key="/user/testController"  value-ref="testController"/>
+				<entry key="/user/resetdevices"  value-ref="resetdevices"/>
+
+				<!--移植-->
+				<entry key="/api/user/new_login"  value-ref="new_login"/>
+
+			</map>
+		</property>
+	</bean>
+
+
+
+</beans>

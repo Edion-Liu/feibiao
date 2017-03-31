@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zhmt.feibiao.user.dao.UserDao">
+
+	<sql id="userColumns">
+		a.id,
+		a.login_name as "loginName",
+		a.nick_name as "nickName",
+		a.password,
+		a.mobile,
+		a.user_type as "userType",
+		a.create_date as "createDate",
+		a.update_date as "updateDate"
+	</sql>
+	
+	<!-- 根据ID查询用户 -->
+	<select id="findUserByID" resultType="com.zhmt.feibiao.user.bean.User">
+		SELECT
+			<include refid="userColumns"/>
+		FROM tbl_user a
+		WHERE a.id = #{id}
+	</select>
+	
+	<!-- 根据登录名查询用户 -->
+	<select id="findUserByName" resultType="com.zhmt.feibiao.user.bean.User" parameterType="com.zhmt.feibiao.user.bean.User">
+		SELECT
+			<include refid="userColumns"/>
+		FROM tbl_user a
+		WHERE a.login_name = #{loginName}
+	</select>
+
+	<select id="findUserByNameANDpassword" resultType="com.zhmt.feibiao.user.bean.User" parameterType="com.zhmt.feibiao.user.bean.User">
+		SELECT
+		<include refid="userColumns"/>
+		FROM tbl_user a
+		WHERE a.login_name = #{loginName} AND a.password=#{password}
+	</select>
+	
+	<select id="findUserList" resultType="com.zhmt.feibiao.user.bean.User">
+		select 
+		 <include refid="userColumns"/>
+		from tbl_user a
+	</select>
+
+	<insert id="insert">
+		INSERT INTO tbl_user(
+			a.id,
+			a.login_name,
+			a.nick_name,
+			a.password,
+			a.mobile,
+			a.userType,
+			a.create_date,
+			a.photo
+		) VALUES (
+			#{id}, 
+			#{loginName}, 
+			#{nickName}, 
+			#{password}, 
+			#{mobile}, 
+			#{userType}, 
+			#{createDate}, 
+			#{photo}
+		)
+	</insert>
+
+	<insert id="add" parameterType="com.zhmt.feibiao.user.bean.User">
+		INSERT INTO
+
+		tbl_user(
+		  login_name,
+		  password
+		)
+		VALUES (
+
+		#{loginName},
+		#{password}
+		)
+	</insert>
+	
+	<!-- 更新用户 -->
+	<update id="update">
+		UPDATE sys_user SET 
+			login_name = #{loginName}, 
+			nick_name = #{nickName}, 
+			password = #{password}, 
+			mobile = #{mobile}, 
+			user_type = #{userType}, 
+			update_date = #{updateDate}, 
+			photo = #{photo}
+		WHERE id = #{id}
+	</update>
+	
+</mapper>
